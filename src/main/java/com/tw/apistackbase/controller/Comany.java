@@ -6,10 +6,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class Employer {
+public class Comany {
+    private String companyName;
+    private int employeesNumber;
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public void setEmployeesNumber(int employeesNumber) {
+        this.employeesNumber = employeesNumber;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public int getEmployeesNumber() {
+        return employeesNumber;
+    }
+
     private List<Employee> employeeList;
     private int idIndex = -1;
-
 
     public int getIdIndex() {
         return idIndex;
@@ -19,10 +37,10 @@ public class Employer {
         this.idIndex = idIndex;
     }
 
-    public Employer(List<Employee> employeeList) {
+    public Comany(List<Employee> employeeList) {
         this.employeeList = employeeList;
     }
-    public Employer(){
+    public Comany(){
         this.employeeList = new ArrayList<Employee>();
     }
 
@@ -56,6 +74,15 @@ public class Employer {
             }
         }
         return this.employeeList.remove(target);
+    }
+
+    public Employee getEmployeeById(int userId){
+        for (Employee employee1:employeeList) {
+            if(employee1.getId()==userId){
+                return employee1;
+            }
+        }
+        return null;
     }
 
 
