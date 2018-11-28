@@ -30,9 +30,6 @@ public class Comany {
         return employeesNumber;
     }
 
-    public List<Employee> getEmployeeList() {
-        return employeeList;
-    }
 
     public void setIdIndex(int idIndex) {
         this.idIndex = idIndex;
@@ -45,7 +42,7 @@ public class Comany {
         this.employeeList = new ArrayList<Employee>();
     }
 
-    public List<Employee> getAll(){
+    public List<Employee> getEmployeeList(){
         return employeeList;
     }
 
@@ -108,6 +105,7 @@ public class Comany {
         }
         return employeesWithGender;
     }
+
 
 
 }

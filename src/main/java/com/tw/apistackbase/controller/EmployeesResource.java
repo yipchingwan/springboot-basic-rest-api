@@ -1,7 +1,6 @@
 package com.tw.apistackbase.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,16 +16,16 @@ public class EmployeesResource {
     public EmployeesResource(Comany comany){
         this.comany = comany;
         this.comany.setCompanyName("alibaba");
-        this.comany.getAll().add(new Employee(0, "Xiaoming", 20,"Male", 1));
-        this.comany.getAll().add(new Employee(1, "Xiaohong", 19,"Female", 2));
-        this.comany.getAll().add(new Employee(2, "Xiaozhi", 15,"Male",3));
-        this.comany.getAll().add(new Employee(3, "Xiaogang", 16,"Male",4));
-        this.comany.getAll().add(new Employee(4, "Xiaoxia", 15,"Female",5));
+        this.comany.getEmployeeList().add(new Employee(0, "Xiaoming", 20,"Male", 1));
+        this.comany.getEmployeeList().add(new Employee(1, "Xiaohong", 19,"Female", 2));
+        this.comany.getEmployeeList().add(new Employee(2, "Xiaozhi", 15,"Male",3));
+        this.comany.getEmployeeList().add(new Employee(3, "Xiaogang", 16,"Male",4));
+        this.comany.getEmployeeList().add(new Employee(4, "Xiaoxia", 15,"Female",5));
     }
 
     @GetMapping(produces = {"application/json"})
     public @ResponseBody List<Employee> getAll() {
-        return comany.getAll();
+        return comany.getEmployeeList();
     }
 
     @PostMapping(produces = {"application/json"})
