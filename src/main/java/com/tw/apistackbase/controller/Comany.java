@@ -26,13 +26,12 @@ public class Comany {
     }
 
     public int getEmployeesNumber() {
+        this.employeesNumber = this.employeeList.size();
         return employeesNumber;
     }
 
-
-
-    public int getIdIndex() {
-        return idIndex;
+    public List<Employee> getEmployeeList() {
+        return employeeList;
     }
 
     public void setIdIndex(int idIndex) {
