@@ -9,6 +9,9 @@ import java.util.List;
 public class Comany {
     private String companyName;
     private int employeesNumber;
+    private List<Employee> employeeList;
+    private int idIndex = -1;
+
 
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
@@ -26,8 +29,7 @@ public class Comany {
         return employeesNumber;
     }
 
-    private List<Employee> employeeList;
-    private int idIndex = -1;
+
 
     public int getIdIndex() {
         return idIndex;
@@ -85,6 +87,28 @@ public class Comany {
         return null;
     }
 
+    public List<Employee> getEmployeeByPage(int page, int pageSize){
+        int start = page*pageSize-pageSize;
+        List<Employee> employeesInPage = new ArrayList<Employee>();
+        for (int i =start; i<start+pageSize; i++){
+            if(i==this.employeeList.size()-1){
+                employeesInPage.add(this.employeeList.get(i));
+                break;
+            }
+            employeesInPage.add(this.employeeList.get(i));
+        }
+        return employeesInPage;
+    }
+
+    public List<Employee> getEmployeeByGender(String gender){
+        List<Employee> employeesWithGender = new ArrayList<Employee>();
+        for(Employee employee : employeeList){
+            if(employee.getGender().equals(gender)){
+                employeesWithGender.add(employee);
+            }
+        }
+        return employeesWithGender;
+    }
 
 
 }

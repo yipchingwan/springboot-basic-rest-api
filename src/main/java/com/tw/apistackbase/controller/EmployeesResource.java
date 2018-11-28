@@ -1,6 +1,7 @@
 package com.tw.apistackbase.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,22 +24,22 @@ public class EmployeesResource {
         this.comany.getAll().add(new Employee(4, "Xiaoxia", 15,"Female",5));
     }
 
-    @GetMapping(path="/getAll", produces = {"application/json"})
+    @GetMapping(produces = {"application/json"})
     public @ResponseBody List<Employee> getAll() {
         return comany.getAll();
     }
 
-    @PostMapping(path="/create", produces = {"application/json"})
+    @PostMapping(produces = {"application/json"})
     public Employee create(@RequestBody Employee employee) {
         return comany.addEmployee(employee);
     }
 
-    @PutMapping(path="/update/{userID}", produces = {"application/json"})
+    @PutMapping(path="/{userID}", produces = {"application/json"})
     public Employee update(@PathVariable int userID, @RequestBody Employee employee){
         return comany.updateEmployee(userID, employee);
     }
 
-    @DeleteMapping(path="/delete/{userID}", produces = {"application/json"})
+    @DeleteMapping(path="/{userID}", produces = {"application/json"})
     public Employee delete(@PathVariable int userID){
         return comany.deleteEmployee(userID);
     }
@@ -46,6 +47,15 @@ public class EmployeesResource {
     @GetMapping(path="/{userID}", produces = {"application/json"})
     public Employee getEmplyee(@PathVariable int userID){
         return comany.getEmployeeById(userID);
+    }
+
+    @RequestMapping(produces = {"application/json"}, params = {"page", "pageSize"})
+    public List<Employee> getPageAndPageSize(@RequestParam(value="page") int page, @RequestParam(value="pageSize") int pageSize){
+        return comany.getEmployeeByPage(page, pageSize);
+    }
+    @RequestMapping(produces = {"application/json"}, params = {"gender"})
+    public List<Employee> getEmpByGender(@RequestParam(value="gender") String gender){
+        return comany.getEmployeeByGender(gender);
     }
 
 
